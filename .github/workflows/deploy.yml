@@ -15,8 +15,8 @@ jobs:
       - name: Setup SSH
         run: |
           mkdir -p ~/.ssh
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
-          chmod 600 ~/.ssh/id_ed25519
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa.pub
+          chmod 600 ~/.ssh/id_rsa.pub
           ssh-keyscan ${{ secrets.SERVER_IP }} >> ~/.ssh/known_hosts
 
       - name: Install Ansible
@@ -25,5 +25,5 @@ jobs:
       - name: Deploy
         run: |
           echo "[portfolio]" > inventory_ci.ini
-          echo "${{ secrets.SERVER_IP }} ansible_user=ubuntu ansible_ssh_private_key_file=~/.ssh/id_ed25519" >> inventory_ci.ini
+          echo "${{ secrets.SERVER_IP }} ansible_user=ubuntu ansible_ssh_private_key_file=~/.ssh/id_rsa.pub" >> inventory_ci.ini
           ansible-playbook -i inventory_ci.ini ansible/deploy.yml
