@@ -25,5 +25,5 @@ jobs:
       - name: Deploy
         run: |
           echo "[portfolio]" > inventory_ci.ini
-          echo "${{ secrets.SERVER_IP }} ansible_user=ubuntu ansible_ssh_private_key_file=~/.ssh/id_rsa.pub" >> inventory_ci.ini
+          echo "${{ secrets.SERVER_IP }} ansible_user=ubuntu ansible_ssh_private_key_file=~/.ssh/id_rsa" >> inventory_ci.ini
           ansible-playbook -i inventory_ci.ini ansible/deploy.yml
