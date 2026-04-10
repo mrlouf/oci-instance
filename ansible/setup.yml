@@ -1,0 +1,101 @@
+---
+# ─────────────────────────────────────────────────────────────────────────────
+# setup.yml — Installation Nginx + Certbot + configuration HTTPS
+# Usage : ansible-playbook -i inventory.ini setup.yml
+# ─────────────────────────────────────────────────────────────────────────────
+
+- name: Setup portfolio server
+  hosts: portfolio
+  become: true
+  vars_files:
+    - vars.yml
+
+  tasks:
+
+    # ── Système ──────────────────────────────────────────────────────────────
+
+    - name: Mise à jour des paquets
+      apt:
+        update_cache: yes
+        upgrade: safe
+        cache_valid_time: 3600
+
+    - name: Installation de Nginx et Certbot
+      apt:
+        name:
+          - nginx
+          - certbot
+          - python3-certbot-nginx
+        state: present
+
+    # ── Dossier du site ──────────────────────────────────────────────────────
+
+    - name: Création du dossier du site
+      file:
+        path: "{{ remote_site_path }}"
+        state: directory
+        owner: www-data
+        group: www-data
+        mode: "0755"
+
+    # ── Config Nginx (HTTP d'abord, Certbot s'occupe du HTTPS) ───────────────
+
+    - name: Copie de la config Nginx
+      template:
+        src: templates/nginx.conf.j2
+        dest: "{{ nginx_config_path }}"
+        mode: "0644"
+      notify: Reload Nginx
+
+    - name: Activation du site
+      file:
+        src: "{{ nginx_config_path }}"
+        dest: "/etc/nginx/sites-enabled/portfolio"
+        state: link
+      notify: Reload Nginx
+
+    - name: Suppression du site par défaut Nginx
+      file:
+        path: /etc/nginx/sites-enabled/default
+        state: absent
+      notify: Reload Nginx
+
+    - name: Test de la config Nginx
+      command: nginx -t
+      changed_when: false
+
+    - name: Démarrage et activation de Nginx
+      service:
+        name: nginx
+        state: started
+        enabled: yes
+
+    # ── Certbot HTTPS ────────────────────────────────────────────────────────
+
+    - name: Obtention du certificat Let's Encrypt
+      command: >
+        certbot --nginx
+        -d {{ domain_name }}
+        -d www.{{ domain_name }}
+        --non-interactive
+        --agree-tos
+        --email {{ certbot_email }}
+        --redirect
+      args:
+        creates: /etc/letsencrypt/live/{{ domain_name }}/fullchain.pem
+
+    # ── Renouvellement auto ──────────────────────────────────────────────────
+
+    - name: Cron de renouvellement Certbot (2x par jour, standard Let's Encrypt)
+      cron:
+        name: "Certbot renewal"
+        minute: "0"
+        hour: "3,15"
+        job: "certbot renew --quiet && systemctl reload nginx"
+        user: root
+
+  handlers:
+    - name: Reload Nginx
+      service:
+        name: nginx
+        state: reloaded

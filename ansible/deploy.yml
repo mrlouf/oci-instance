@@ -1,0 +1,37 @@
+---
+# ─────────────────────────────────────────────────────────────────────────────
+# deploy.yml — Déploiement des fichiers statiques du portfolio
+# Usage : ansible-playbook -i inventory.ini deploy.yml
+# ─────────────────────────────────────────────────────────────────────────────
+
+- name: Deploy portfolio
+  hosts: portfolio
+  become: true
+  vars_files:
+    - vars.yml
+
+  tasks:
+
+    - name: Synchronisation des fichiers du site
+      synchronize:
+        src: "{{ local_site_path }}"
+        dest: "{{ remote_site_path }}/"
+        delete: yes          # Supprime les fichiers distants absents en local
+        recursive: yes
+        rsync_opts:
+          - "--exclude=.git"
+          - "--exclude=.DS_Store"
+          - "--exclude=node_modules"
+
+    - name: Correction des permissions
+      file:
+        path: "{{ remote_site_path }}"
+        owner: www-data
+        group: www-data
+        recurse: yes
+        mode: "0755"
+
+    - name: Reload Nginx
+      service:
+        name: nginx
+        state: reloaded

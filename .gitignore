@@ -416,3 +416,16 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
+# Secrets — ne jamais committer
+terraform.tfvars
+*.pem
+*.key
+
+# State Terraform — contient des infos sensibles
+terraform.tfstate
+terraform.tfstate.backup
+.terraform.tfstate.lock.info
+
+# Cache Terraform
+.terraform/
+.terraform.lock.hcl

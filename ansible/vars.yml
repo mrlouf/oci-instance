@@ -1,0 +1,10 @@
+# ─── À REMPLIR ────────────────────────────────────────────────────────────────
+domain_name: "mrlouf.com"          # Ton domaine principal
+certbot_email: "ponchon.nicolas@gmail.com"         # Email pour Let's Encrypt (alertes expiration)
+
+# ─── Chemins locaux ───────────────────────────────────────────────────────────
+local_site_path: "../../site/"            # Dossier local contenant index.html, css/, js/
+
+# ─── Chemins serveur ──────────────────────────────────────────────────────────
+remote_site_path: "/var/www/portfolio"
+nginx_config_path: "/etc/nginx/sites-available/portfolio"
