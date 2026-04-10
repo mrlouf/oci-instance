@@ -23,9 +23,7 @@ jobs:
 
       - name: Deploy
         run: |
-          cat <<EOF > inventory_ci.ini
-[portfolio]
-portfolio-server ansible_host=${{ secrets.SERVER_IP }}
-ansible_user=ubuntu
-EOF
+          echo "[portfolio]" > inventory_ci.ini
+          echo "portfolio-server ansible_host=${{ secrets.SERVER_IP }}" >> inventory_ci.ini
+          echo "ansible_user=ubuntu" >> inventory_ci.ini
           ansible-playbook -i inventory_ci.ini ansible/deploy.yml
