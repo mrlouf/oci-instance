@@ -1,182 +1,381 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nicolas Ponchon - mrlouf</title>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="templatemo-parallax-starter.css">
-    <!--
-
-TemplateMo 612 Parallax Starter
-
-https://templatemo.com/tm-612-parallax-starter
-
+<!DOCTYPE HTML>
+<!--
+	Dimension by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
-</head>
-<body>
+<html>
+	<head>
+		<title>Nicolas Ponchon - mrlouf</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
 
-    <!-- Navigation -->
-    <nav id="templatemo-nav">
-        <div class="nav-container">
-            <a href="#home" class="nav-logo">Nicolas Ponchon - mrlouf</a>
-            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#home" class="active">HOME</a></li>
-                <li><a href="#about">ABOUT ME</a></li>
-                <li><a href="#services">SERVICES</a></li>
-                <li><a href="#gallery">GALLERY</a></li>
-                <li><a href="#deployment">POWERING THIS WEBSITE</a></li>
-                <li><a href="#contact">CONTACT</a></li>
-            </ul>
-        </div>
-    </nav>
+		<!-- Wrapper -->
+			<div id="wrapper">
 
-    <!-- Section 1: Home / Hero -->
-    <section id="home" class="parallax-section">
-        <div class="parallax-bg" data-speed="0.5" style="background-image: url('images/parallax-bg-01.jpg')"></div>
-        <div class="parallax-overlay"></div>
-        <div class="section-content">
-            <h1 class="section-title hero-title">ようこそ!</h1>
-            <p class="section-subtitle caps">IF YOU CAN READ THIS, MY AUTOMATED DEPLOYMENT HAS SUCCEEDED</p>
-            <a href="#about" class="btn-scroll">ABOUT ME</a>
-        </div>
-    </section>
+				<!-- Header -->
+					<header id="header">
+						<div class="content">
+							<div class="inner">
+								<img src="images/about-01.jpg" alt="My portrait" class="logo-image" />
+								<h1></h1>
+								<h1>Nicolas Ponchon</h1>
+								<p>Former Translator turned DevOps Engineer</p>
+							</div>
+						</div>
+						<nav>
+							<ul>
+								<li><a href="#intro">Intro</a></li>
+								<li><a href="#projects">Projects</a></li>
+								<li><a href="#gallery">Gallery</a></li>
+								<li><a href="#contact">Contact</a></li>
+								<!-- <li><a href="#elements">Elements</a></li> -->
+							</ul>
+						</nav>
+					</header>
 
-    <!-- Section 2: About -->
-    <section id="about" class="parallax-section">
-        <div class="parallax-bg" data-speed="0.45" style="background-image: url('images/parallax-bg-02.jpg')"></div>
-        <div class="parallax-overlay"></div>
-        <div class="section-content">
-            <h2 class="section-title">ABOUT ME</h2>
-            <div class="about-cols">
-                <div class="about-col">
-                    <div class="about-thumb thumb-top-left">
-                        <img src="images/about-01.jpg" alt="Picture of Nicolas Ponchon">
-                    </div>
-                    <p>My name is Nicolas Ponchon, and after more than a decade spent translating texts, I have decided to switch careers and add programming languages to the languages I already spoke. After successfully completing my studies at 42 Barcelona, I am now looking for opportunities to work as a DevOps engineer.</p>
-                    <p>During my studies, I discovered that I really enjoyed automating things, installing (and crashing!) virtual machines, as well as playing with cloud instances. As part of my learning journey, I had the opportunity to automate the deployment of applications on the cloud and out of curiosity, I decided that I should try and deploy this website entirely myself on an Oracle Cloud instance, using Terraform and Ansible. You can find more details about the deployment <a href="index.html#deployment">here</a>.</p>
-                    <p>The design template is provided by <a href="https://templatemo.com" rel="nofollow" target="_blank">TemplateMo</a>.</p>
-                </div>
-                <div class="about-col">
-                    <div class="about-thumb-wide">
-                        <img src="images/about-02.jpg" alt="Our Process">
-                    </div>
-                    <p>I am particularly passionate about automation and continuous integration/continuous deployment (CI/CD) pipelines. I see them as useful tools that make repetitive, boring tasks more efficient and that, overall, help developers do what they do best: focus on the code, not on the deployment. In other words, I enjoy making it work for everyone, not just on your machine.</p>
-                    <p>When I am not busy debugging crashed out Kubernetes pods or failed ArgoCD deployments, I like to spend my time on the saddle, cycling through the beautiful landscape of sunny Barcelona. I also enjoy analogue photography so if you are curious, why not have a quick look at my <a href="#gallery">personal gallery</a>?</p>
-                </div>
-            </div>
-            <p class="unsplash-credit">Images courtesy of <a href="https://unsplash.com" target="_blank">Unsplash</a></p>
-        </div>
-    </section>
+				<!-- Main -->
+					<div id="main">
 
-    <!-- Section 3: Services -->
-    <section id="services" class="parallax-section">
-        <div class="parallax-bg" data-speed="0.55" style="background-image: url('images/parallax-bg-03.jpg')"></div>
-        <div class="parallax-overlay overlay-dark"></div>
-        <div class="section-content">
-            <h2 class="section-title">WHAT WE DO</h2>
-            <p class="section-subtitle caps">DESIGN &middot; DEVELOP &middot; DELIVER</p>
-            <div class="services-grid">
-                <div class="service-item">
-                    <div class="service-icon">
-                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-                            <rect x="4" y="4" width="32" height="32" rx="2" stroke="white" stroke-width="1.5"/>
-                            <line x1="4" y1="14" x2="36" y2="14" stroke="white" stroke-width="1.5"/>
-                            <circle cx="10" cy="9" r="2" fill="white"/>
-                            <circle cx="16" cy="9" r="2" fill="white"/>
-                        </svg>
-                    </div>
-                    <h3>WEB DESIGN</h3>
-                    <p class="caps">CLEAN LAYOUTS BUILT FOR IMPACT AND CLARITY</p>
-                </div>
-                <div class="service-item">
-                    <div class="service-icon">
-                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-                            <path d="M20 4L36 12V28L20 36L4 28V12L20 4Z" stroke="white" stroke-width="1.5"/>
-                            <path d="M20 36V20" stroke="white" stroke-width="1.5"/>
-                            <path d="M36 12L20 20" stroke="white" stroke-width="1.5"/>
-                            <path d="M4 12L20 20" stroke="white" stroke-width="1.5"/>
-                        </svg>
-                    </div>
-                    <h3>BRANDING</h3>
-                    <p class="caps">IDENTITIES THAT RESONATE AND ENDURE</p>
-                </div>
-                <div class="service-item">
-                    <div class="service-icon">
-                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-                            <rect x="8" y="2" width="24" height="36" rx="3" stroke="white" stroke-width="1.5"/>
-                            <line x1="8" y1="8" x2="32" y2="8" stroke="white" stroke-width="1.5"/>
-                            <line x1="8" y1="32" x2="32" y2="32" stroke="white" stroke-width="1.5"/>
-                            <circle cx="20" cy="35" r="1.5" fill="white"/>
-                        </svg>
-                    </div>
-                    <h3>DEVELOPMENT</h3>
-                    <p class="caps">RESPONSIVE CODE THAT PERFORMS EVERYWHERE</p>
-                </div>
-            </div>
-        </div>
-    </section>
+						<!-- Intro -->
+							<article id="intro">
+								<h2 class="major">Intro</h2>
+								<span class="image main"><img src="images/pic01.jpg" alt="" /></span>
+								<p>Hi there! My name is Nicolas Ponchon, welcome to my personal website.</p>
+								<p>After working for more than ten years as a translator, I decided that I needed to learn even more (programming) languages and so I decided to transition to computer science. I joined the <a href="https://www.42barcelona.com/">42 programming school</a> in Barcelona in the summer of 2024, and I completed the program in July 2025. </p>
+								<p>Since then, I have been studying to specialise in <strong>DevOps</strong> practices, such as implementing CI/CI piplelines with <strong>ArgoCD</strong> and <strong>GitLab</strong>, create and manage Kubernetes clusters, containerise applications with <strong>Docker</strong>, or automate the deployment of infrastructure on cloud platforms using <strong>Ansible</strong> and <strong>Terraform</strong>.</p>
+								<p>I am currently looking for opportunities to apply my skills and contribute to captivating projects. Feel free to <a href="#contact">contact me</a> if you are interested in collaborating!</p>
+								<p>When I am not busy debugging OOM-killed pods or failed deployments, I enjoy cycling through the sunny landscapes of Barcelona. I am also a passionate analogue photographer, and you can find some of my work <a href="#gallery">here</a>.</p>
+							</article>
 
-    <!-- Section 4: Gallery -->
-    <section id="gallery" class="parallax-section">
-        <div class="parallax-bg" data-speed="0.5" style="background-image: url('images/parallax-bg-04.jpg')"></div>
-        <div class="parallax-overlay"></div>
-        <div class="section-content">
-            <h2 class="section-title">PERSONAL GALLERY</h2>
-            <div class="carousel-container">
-                <div class="carousel-slide active">
-                    <img src="images/about-01.jpg" alt="Photo 1">
-                </div>
-                <div class="carousel-slide">
-                    <img src="images/about-02.jpg" alt="Photo 2">
-                </div>
-                <div class="carousel-slide">
-                    <img src="images/about-01.jpg" alt="Photo 3">
-                </div>
-                <button class="carousel-btn prev" aria-label="Previous">&#10094;</button>
-                <button class="carousel-btn next" aria-label="Next">&#10095;</button>
-                <div class="carousel-dots">
-                    <span class="dot active" data-index="0"></span>
-                    <span class="dot" data-index="1"></span>
-                    <span class="dot" data-index="2"></span>
-                </div>
-            </div>
-        </div>
-    </section>
+						<!-- Projects -->
+							<article id="projects">
+								<h2 class="major">Projects</h2>
+								<p>This is a list of some of my projects, whether academic or personal.</p>
 
-    <!-- Section 5: Contact -->
-    <section id="contact" class="parallax-section">
-        <div class="parallax-bg" data-speed="0.5" style="background-image: url('images/parallax-bg-05.jpg')"></div>
-        <div class="parallax-overlay overlay-medium"></div>
-        <div class="section-content">
-            <h2 class="section-title">GET IN TOUCH</h2>
-            <p class="section-subtitle caps">LET'S START SOMETHING GREAT TOGETHER</p>
-            <div class="contact-form-wrap">
-                <form id="contactForm" class="contact-form">
-                    <div class="form-row">
-                        <input type="text" placeholder="Your name" required>
-                        <input type="email" placeholder="Your email" required>
-                    </div>
-                    <textarea placeholder="Your message" rows="5" required></textarea>
-                    <button type="submit" class="btn-submit">SEND MESSAGE</button>
-                </form>
-            </div>
-        </div>
-    </section>
+								<span class="image main"><img src="images/pic02.jpg" alt="" /></span>
+								<p><a href="https://github.com/mrlouf/dawn-treader" target="_blank" rel="noopener noreferrer">&bull;&nbsp;&nbsp;dawn-treader</a></p>
 
-    <!-- Footer -->
-    <footer id="templatemo-footer">
-        <p>Copyright &copy; 2026 Nicolas Ponchon. Original design by <a href="https://templatemo.com" rel="nofollow" target="_blank">TemplateMo</a></p>
-    </footer>
-    <script src="templatemo-parallax-script.js"></script>
-</body>
+								<span class="image main"><img src="images/pic02.jpg" alt="" /></span>
+								<p><a href="https://github.com/mrlouf/ft_transcendence" target="_blank" rel="noopener noreferrer">&bull;&nbsp;&nbsp;ft_transcendence</a></p>
+
+								<span class="image main"><img src="images/pic02.jpg" alt="" /></span>
+								<p><a href="https://github.com/mrlouf/oci-instance" target="_blank" rel="noopener noreferrer">&bull;&nbsp;&nbsp;oci-instance</a></p>
+
+								<span class="image main"><img src="images/pic02.jpg" alt="" /></span>
+								<p><a href="https://github.com/mrlouf/cloud-1" target="_blank" rel="noopener noreferrer">&bull;&nbsp;&nbsp;cloud-1</a></p>
+
+							</article>
+
+						<!-- Gallery -->
+							<article id="gallery">
+								<h2 class="major">Gallery</h2>
+								<p>All pictures are my own work. Please click on any image to enlarge.</p>
+								<!-- TODO: Insert a carousel of images -->
+								<a href="images/gallery-01.jpg" class="image main gallery-link" target="_blank" rel="noopener noreferrer"><img src="images/gallery-01.jpg" alt="Barcelona street photography shot on film" /></a>
+								<p><b>Barcelona, 2026</b> &middot; <i>Canon A-1 - Washi S</i></p>
+
+								<a href="images/gallery-02.jpg" class="image main gallery-link" target="_blank" rel="noopener noreferrer"><img src="images/gallery-02.jpg" alt="Barcelona film photography composition" /></a>
+								<p><b>Above the clouds, 2025</b> &middot; <i>Olympus XA - Ilford Delta 400</i></p>
+
+								<a href="images/gallery-03.jpg" class="image main gallery-link" target="_blank" rel="noopener noreferrer"><img src="images/gallery-03.jpg" alt="Barcelona film photography composition" /></a>
+								<p><b>Barcelona, 2023</b> &middot; <i>Minolta X-9 - Washi S</i></p>
+
+							</article>
+
+						<!-- Contact -->
+							<article id="contact">
+								<h2 class="major">Contact</h2>
+								<form method="post" action="#">
+									<div class="fields">
+										<div class="field half">
+											<label for="name">Name</label>
+											<input type="text" name="name" id="name" />
+										</div>
+										<div class="field half">
+											<label for="email">Email</label>
+											<input type="text" name="email" id="email" />
+										</div>
+										<div class="field">
+											<label for="message">Message</label>
+											<textarea name="message" id="message" rows="4"></textarea>
+										</div>
+									</div>
+									<ul class="actions">
+										<li><input type="submit" value="Send Message" class="primary" /></li>
+										<li><input type="reset" value="Reset" /></li>
+									</ul>
+								</form>
+								<ul class="icons">
+									<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+									<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+								</ul>
+							</article>
+
+						<!-- Elements -->
+							<article id="elements">
+								<h2 class="major">Elements</h2>
+
+								<section>
+									<h3 class="major">Text</h3>
+									<p>This is <b>bold</b> and this is <strong>strong</strong>. This is <i>italic</i> and this is <em>emphasized</em>.
+									This is <sup>superscript</sup> text and this is <sub>subscript</sub> text.
+									This is <u>underlined</u> and this is code: <code>for (;;) { ... }</code>. Finally, <a href="#">this is a link</a>.</p>
+									<hr />
+									<h2>Heading Level 2</h2>
+									<h3>Heading Level 3</h3>
+									<h4>Heading Level 4</h4>
+									<h5>Heading Level 5</h5>
+									<h6>Heading Level 6</h6>
+									<hr />
+									<h4>Blockquote</h4>
+									<blockquote>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan faucibus. Vestibulum ante ipsum primis in faucibus lorem ipsum dolor sit amet nullam adipiscing eu felis.</blockquote>
+									<h4>Preformatted</h4>
+									<pre><code>i = 0;
+
+while (!deck.isInOrder()) {
+    print 'Iteration ' + i;
+    deck.shuffle();
+    i++;
+}
+
+print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
+								</section>
+
+								<section>
+									<h3 class="major">Lists</h3>
+
+									<h4>Unordered</h4>
+									<ul>
+										<li>Dolor pulvinar etiam.</li>
+										<li>Sagittis adipiscing.</li>
+										<li>Felis enim feugiat.</li>
+									</ul>
+
+									<h4>Alternate</h4>
+									<ul class="alt">
+										<li>Dolor pulvinar etiam.</li>
+										<li>Sagittis adipiscing.</li>
+										<li>Felis enim feugiat.</li>
+									</ul>
+
+									<h4>Ordered</h4>
+									<ol>
+										<li>Dolor pulvinar etiam.</li>
+										<li>Etiam vel felis viverra.</li>
+										<li>Felis enim feugiat.</li>
+										<li>Dolor pulvinar etiam.</li>
+										<li>Etiam vel felis lorem.</li>
+										<li>Felis enim et feugiat.</li>
+									</ol>
+									<h4>Icons</h4>
+									<ul class="icons">
+										<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+										<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+										<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+										<li><a href="#" class="icon brands fa-github"><span class="label">Github</span></a></li>
+									</ul>
+
+									<h4>Actions</h4>
+									<ul class="actions">
+										<li><a href="#" class="button primary">Default</a></li>
+										<li><a href="#" class="button">Default</a></li>
+									</ul>
+									<ul class="actions stacked">
+										<li><a href="#" class="button primary">Default</a></li>
+										<li><a href="#" class="button">Default</a></li>
+									</ul>
+								</section>
+
+								<section>
+									<h3 class="major">Table</h3>
+									<h4>Default</h4>
+									<div class="table-wrapper">
+										<table>
+											<thead>
+												<tr>
+													<th>Name</th>
+													<th>Description</th>
+													<th>Price</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>Item One</td>
+													<td>Ante turpis integer aliquet porttitor.</td>
+													<td>29.99</td>
+												</tr>
+												<tr>
+													<td>Item Two</td>
+													<td>Vis ac commodo adipiscing arcu aliquet.</td>
+													<td>19.99</td>
+												</tr>
+												<tr>
+													<td>Item Three</td>
+													<td> Morbi faucibus arcu accumsan lorem.</td>
+													<td>29.99</td>
+												</tr>
+												<tr>
+													<td>Item Four</td>
+													<td>Vitae integer tempus condimentum.</td>
+													<td>19.99</td>
+												</tr>
+												<tr>
+													<td>Item Five</td>
+													<td>Ante turpis integer aliquet porttitor.</td>
+													<td>29.99</td>
+												</tr>
+											</tbody>
+											<tfoot>
+												<tr>
+													<td colspan="2"></td>
+													<td>100.00</td>
+												</tr>
+											</tfoot>
+										</table>
+									</div>
+
+									<h4>Alternate</h4>
+									<div class="table-wrapper">
+										<table class="alt">
+											<thead>
+												<tr>
+													<th>Name</th>
+													<th>Description</th>
+													<th>Price</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>Item One</td>
+													<td>Ante turpis integer aliquet porttitor.</td>
+													<td>29.99</td>
+												</tr>
+												<tr>
+													<td>Item Two</td>
+													<td>Vis ac commodo adipiscing arcu aliquet.</td>
+													<td>19.99</td>
+												</tr>
+												<tr>
+													<td>Item Three</td>
+													<td> Morbi faucibus arcu accumsan lorem.</td>
+													<td>29.99</td>
+												</tr>
+												<tr>
+													<td>Item Four</td>
+													<td>Vitae integer tempus condimentum.</td>
+													<td>19.99</td>
+												</tr>
+												<tr>
+													<td>Item Five</td>
+													<td>Ante turpis integer aliquet porttitor.</td>
+													<td>29.99</td>
+												</tr>
+											</tbody>
+											<tfoot>
+												<tr>
+													<td colspan="2"></td>
+													<td>100.00</td>
+												</tr>
+											</tfoot>
+										</table>
+									</div>
+								</section>
+
+								<section>
+									<h3 class="major">Buttons</h3>
+									<ul class="actions">
+										<li><a href="#" class="button primary">Primary</a></li>
+										<li><a href="#" class="button">Default</a></li>
+									</ul>
+									<ul class="actions">
+										<li><a href="#" class="button">Default</a></li>
+										<li><a href="#" class="button small">Small</a></li>
+									</ul>
+									<ul class="actions">
+										<li><a href="#" class="button primary icon solid fa-download">Icon</a></li>
+										<li><a href="#" class="button icon solid fa-download">Icon</a></li>
+									</ul>
+									<ul class="actions">
+										<li><span class="button primary disabled">Disabled</span></li>
+										<li><span class="button disabled">Disabled</span></li>
+									</ul>
+								</section>
+
+								<section>
+									<h3 class="major">Form</h3>
+									<form method="post" action="#">
+										<div class="fields">
+											<div class="field half">
+												<label for="demo-name">Name</label>
+												<input type="text" name="demo-name" id="demo-name" value="" placeholder="Jane Doe" />
+											</div>
+											<div class="field half">
+												<label for="demo-email">Email</label>
+												<input type="email" name="demo-email" id="demo-email" value="" placeholder="jane@untitled.tld" />
+											</div>
+											<div class="field">
+												<label for="demo-category">Category</label>
+												<select name="demo-category" id="demo-category">
+													<option value="">-</option>
+													<option value="1">Manufacturing</option>
+													<option value="1">Shipping</option>
+													<option value="1">Administration</option>
+													<option value="1">Human Resources</option>
+												</select>
+											</div>
+											<div class="field half">
+												<input type="radio" id="demo-priority-low" name="demo-priority" checked>
+												<label for="demo-priority-low">Low</label>
+											</div>
+											<div class="field half">
+												<input type="radio" id="demo-priority-high" name="demo-priority">
+												<label for="demo-priority-high">High</label>
+											</div>
+											<div class="field half">
+												<input type="checkbox" id="demo-copy" name="demo-copy">
+												<label for="demo-copy">Email me a copy</label>
+											</div>
+											<div class="field half">
+												<input type="checkbox" id="demo-human" name="demo-human" checked>
+												<label for="demo-human">Not a robot</label>
+											</div>
+											<div class="field">
+												<label for="demo-message">Message</label>
+												<textarea name="demo-message" id="demo-message" placeholder="Enter your message" rows="6"></textarea>
+											</div>
+										</div>
+										<ul class="actions">
+											<li><input type="submit" value="Send Message" class="primary" /></li>
+											<li><input type="reset" value="Reset" /></li>
+										</ul>
+									</form>
+								</section>
+
+							</article>
+
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<p class="copyright">&copy; Nicolas Ponchon. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+					</footer>
+
+			</div>
+
+		<!-- BG -->
+			<div id="bg"></div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
 </html>
