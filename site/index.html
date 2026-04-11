@@ -29,7 +29,7 @@
 						</div>
 						<nav>
 							<ul>
-								<li><a href="#intro">Intro</a></li>
+								<li><a href="#about">About me</a></li>
 								<li><a href="#projects">Projects</a></li>
 								<li><a href="#gallery">Gallery</a></li>
 								<li><a href="#contact">Contact</a></li>
@@ -41,14 +41,14 @@
 				<!-- Main -->
 					<div id="main">
 
-						<!-- Intro -->
-							<article id="intro">
-								<h2 class="major">Intro</h2>
+						<!-- About -->
+							<article id="about">
+								<h2 class="major">About me</h2>
 								<span class="image main"><img src="images/pic01.jpg" alt="" /></span>
-								<p>Hi there! My name is Nicolas Ponchon, welcome to my personal website.</p>
+								<p>My name is Nicolas Ponchon, welcome to my personal website.</p>
 								<p>After working for more than ten years as a translator, I decided that I needed to learn even more (programming) languages and so I decided to transition to computer science. I joined the <a href="https://www.42barcelona.com/">42 programming school</a> in Barcelona in the summer of 2024, and I completed the program in July 2025. </p>
 								<p>Since then, I have been specialising in <strong>DevOps</strong> practices, such as implementing CI/CI piplelines with <strong>ArgoCD</strong> and <strong>GitLab</strong>, create and manage Kubernetes clusters, containerise applications with <strong>Docker</strong>, or automate the deployment of infrastructure on cloud platforms using <strong>Ansible</strong> and <strong>Terraform</strong>. You can find some of these projects <a href="#projects">here</a>.</p>
-								<p>I am currently looking for opportunities to apply my skills and contribute to captivating projects. Feel free to <a href="#contact">contact me</a> if you are interested in collaborating!</p>
+								<p>I am currently looking for opportunities to apply my skills and contribute to captivating projects. Feel free to <a href="#contact">contact me</a> if you are interested!</p>
 								<p>When I am not busy debugging OOM-killed pods or failed deployments, I enjoy cycling through the sunny landscapes of Barcelona. I am also a passionate analogue photographer, and you can find some of my work <a href="#gallery">here</a>.</p>
 							</article>
 
@@ -59,15 +59,23 @@
 
 								<span class="image main"><img src="images/pic02.jpg" alt="" /></span>
 								<p><a href="https://github.com/mrlouf/dawn-treader" target="_blank" rel="noopener noreferrer">&bull;&nbsp;&nbsp;dawn-treader</a></p>
+								<p>This project was about migrating a web application hosted on the cloud from a Docker Compose environment to a Kubernetes cluster, using Helm as the packaging tool. I used the GitHub registry to store the Docker images used in the application, while ArgoCD was responsible for managing the deployment of the Helm chart.</p>
 
 								<span class="image main"><img src="images/pic02.jpg" alt="" /></span>
 								<p><a href="https://github.com/mrlouf/ft_transcendence" target="_blank" rel="noopener noreferrer">&bull;&nbsp;&nbsp;ft_transcendence</a></p>
+								<p>ft_transcendence was a group project set as the final project of the 42 programming school. It consisted in creating an SPA type web application from zero aimed at recreating the famous Pong game from the 1970s.</p>
+								<p>In this project, I was responsible for the global architecture of the app and the containerised infrastructure with Docker, as well as the backend development with Node.js. I set up the REST API endpoints and helped implement the authentication system with JWT or the various database queries. I also set up the monitoring services with Grafana and Prometheus.</p>
+								<p>Aside from the technical aspects, it was a great learning experience that required solid coordination and efficient communication to ensure success.</p>
 
 								<span class="image main"><img src="images/pic02.jpg" alt="" /></span>
 								<p><a href="https://github.com/mrlouf/oci-instance" target="_blank" rel="noopener noreferrer">&bull;&nbsp;&nbsp;oci-instance</a></p>
+								<p>This project is in fact a meta project: it contains the IaC (Infrastructure as Code) definitions for managing the OCI (Oracle Cloud Infrastructure) instance from which this very website is hosted on.</p>
+								<p>I used this project to get some hands-on experience with Oracle and Terraform, which I had used previously but with AWS services.</p>
 
 								<span class="image main"><img src="images/pic02.jpg" alt="" /></span>
 								<p><a href="https://github.com/mrlouf/cloud-1" target="_blank" rel="noopener noreferrer">&bull;&nbsp;&nbsp;cloud-1</a></p>
+								<p>This was a group project from the Outer Core curriculum at 42. It aims at automating the deployment of a simple WordPress on a cloud-hosted infrastructure using Ansible.</p>
+								<p>The original project did not require any IaC outside of the Ansible playbooks, but I saw this as the perfect opportunity to learn about using Terraform to create and manage the cloud infrastructure.</p>
 
 							</article>
 
