@@ -16,7 +16,7 @@
       synchronize:
         src: "{{ local_site_path }}"
         dest: "{{ remote_site_path }}/"
-        delete: yes          # Supprime les fichiers distants absents en local
+        delete: yes
         recursive: yes
         rsync_opts:
           - "--exclude=.git"
