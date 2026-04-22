@@ -12,7 +12,7 @@
 
   tasks:
 
-    - name: Synchronisation des fichiers du site
+    - name: Synchronisation des fichiers du portfolio
       synchronize:
         src: "{{ local_site_path }}"
         dest: "{{ remote_site_path }}/"
@@ -26,6 +26,25 @@
     - name: Correction des permissions
       file:
         path: "{{ remote_site_path }}"
+        owner: www-data
+        group: www-data
+        recurse: yes
+        mode: "0755"
+
+    - name: Synchronisation des fichiers du bingo
+      synchronize:
+        src: "{{ bingo_local_path }}"
+        dest: "{{ remote_bingo_path }}/"
+        delete: yes
+        recursive: yes
+        rsync_opts:
+          - "--exclude=.git"
+          - "--exclude=.DS_Store"
+          - "--exclude=node_modules"
+
+    - name: Correction des permissions du bingo
+      file:
+        path: "{{ remote_bingo_path }}"
         owner: www-data
         group: www-data
         recurse: yes

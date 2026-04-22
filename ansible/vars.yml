@@ -1,10 +1,15 @@
-# ─── À REMPLIR ────────────────────────────────────────────────────────────────
-domain_name: "mrlouf.com"          # Ton domaine principal
+domain_name: "mrlouf.com"          # Domaine principal
+bingo_domain: "bingos.casa"      # Domaine pour le site de bingo
 certbot_email: "ponchon.nicolas@gmail.com"         # Email pour Let's Encrypt (alertes expiration)
 
 # ─── Chemins locaux ───────────────────────────────────────────────────────────
-local_site_path: "../../site/"            # Dossier local contenant index.html, css/, js/
+local_site_path: "../../sites/portfolio"  # Chemin local vers les fichiers du portfolio
+bingo_local_path: "../../sites/bingo"     # Chemin local vers les fichiers du bingo
 
 # ─── Chemins serveur ──────────────────────────────────────────────────────────
 remote_site_path: "/var/www/portfolio"
-nginx_config_path: "/etc/nginx/sites-available/portfolio"
+remote_bingo_path: "/var/www/bingo"
+
+domain_nginx_config_path: "/etc/nginx/sites-available/portfolio"  # Chemin du fichier de config Nginx à créer
+bingo_nginx_config_path: "/etc/nginx/sites-available/bingo"  # Chemin du fichier de config Nginx à créer pour le site de bingo
+
