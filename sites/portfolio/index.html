@@ -98,19 +98,24 @@
 						<!-- Contact -->
 							<article id="contact">
 								<h2 class="major">Contact</h2>
-								<form method="post" action="#">
+								<p id="contact-status" class="form-status" hidden></p>
+								<form method="post" action="/api/contact">
 									<div class="fields">
 										<div class="field half">
 											<label for="name">Name</label>
-											<input type="text" name="name" id="name" />
+											<input type="text" name="name" id="name" autocomplete="name" required />
 										</div>
 										<div class="field half">
 											<label for="email">Email</label>
-											<input type="text" name="email" id="email" />
+											<input type="email" name="email" id="email" autocomplete="email" required />
+										</div>
+										<div class="field honeypot" aria-hidden="true">
+											<label for="company">Company</label>
+											<input type="text" name="company" id="company" tabindex="-1" autocomplete="off" />
 										</div>
 										<div class="field">
 											<label for="message">Message</label>
-											<textarea name="message" id="message" rows="4"></textarea>
+											<textarea name="message" id="message" rows="4" maxlength="4000" required></textarea>
 										</div>
 									</div>
 									<ul class="actions">

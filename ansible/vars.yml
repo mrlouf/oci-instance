@@ -13,3 +13,11 @@ remote_bingo_path: "/var/www/bingo"
 domain_nginx_config_path: "/etc/nginx/sites-available/portfolio"  # Chemin du fichier de config Nginx à créer
 bingo_nginx_config_path: "/etc/nginx/sites-available/bingo"  # Chemin du fichier de config Nginx à créer pour le site de bingo
 
+# ─── Contact form backend ───────────────────────────────────────────────────
+contact_form_port: 8085
+contact_form_user: "contactform"
+contact_form_group: "contactform"
+contact_form_workdir: "/opt/contact-form"
+contact_form_binary_path: "/opt/contact-form/contact-form"
+contact_form_env_path: "/etc/contact-form.env"
+

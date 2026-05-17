@@ -1,0 +1,21 @@
+[Unit]
+Description=Contact form backend
+After=network.target
+
+[Service]
+Type=simple
+User={{ contact_form_user }}
+Group={{ contact_form_group }}
+WorkingDirectory={{ contact_form_workdir }}
+EnvironmentFile={{ contact_form_env_path }}
+ExecStart={{ contact_form_binary_path }}
+Restart=on-failure
+RestartSec=3
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths={{ contact_form_workdir }}
+
+[Install]
+WantedBy=multi-user.target

@@ -385,6 +385,21 @@
 
 			}
 
+		// Contact form status message.
+			var statusEl = document.getElementById('contact-status');
+			if (statusEl && window.location.search) {
+				var params = new URLSearchParams(window.location.search);
+				if (params.get('sent') === '1') {
+					statusEl.textContent = 'Thanks! Your message has been sent.';
+					statusEl.classList.add('success');
+					statusEl.hidden = false;
+				} else if (params.get('error') === '1') {
+					statusEl.textContent = 'Sorry, something went wrong. Please try again.';
+					statusEl.classList.add('error');
+					statusEl.hidden = false;
+				}
+			}
+
 		// Initialize.
 
 			// Hide main, articles.

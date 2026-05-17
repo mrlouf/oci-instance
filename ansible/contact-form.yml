@@ -1,0 +1,113 @@
+---
+# ─────────────────────────────────────────────────────────────────────────────
+# contact-form.yml — Deploy contact form backend
+# Usage : ansible-playbook -i inventory.ini contact-form.yml
+# ─────────────────────────────────────────────────────────────────────────────
+
+- name: Deploy contact form backend
+  hosts: portfolio
+  become: true
+  vars_files:
+    - vars.yml
+
+  tasks:
+    - name: Ensure CA certificates are installed
+      apt:
+        name:
+          - ca-certificates
+        state: present
+        update_cache: yes
+
+    - name: Ensure contact form group exists
+      group:
+        name: "{{ contact_form_group }}"
+        system: true
+
+    - name: Ensure contact form user exists
+      user:
+        name: "{{ contact_form_user }}"
+        group: "{{ contact_form_group }}"
+        system: true
+        shell: /usr/sbin/nologin
+        create_home: false
+
+    - name: Ensure contact form working directory exists
+      file:
+        path: "{{ contact_form_workdir }}"
+        state: directory
+        owner: "{{ contact_form_user }}"
+        group: "{{ contact_form_group }}"
+        mode: "0755"
+
+    - name: Ensure local build directory exists
+      file:
+        path: "{{ playbook_dir }}/../contact-form/bin"
+        state: directory
+      delegate_to: localhost
+      run_once: true
+
+    - name: Build contact form binary locally
+      command: go build -o "{{ playbook_dir }}/../contact-form/bin/contact-form" .
+      args:
+        chdir: "{{ playbook_dir }}/../contact-form"
+      delegate_to: localhost
+      run_once: true
+
+    - name: Verify contact form env file exists locally
+      stat:
+        path: "{{ playbook_dir }}/files/contact-form.env"
+      delegate_to: localhost
+      run_once: true
+      register: contact_form_env_file
+
+    - name: Fail if contact form env file is missing
+      fail:
+        msg: "Create ansible/files/contact-form.env from ansible/files/contact-form.env.example and fill SMTP credentials."
+      when: not contact_form_env_file.stat.exists
+
+    - name: Install contact form env file
+      copy:
+        src: "{{ playbook_dir }}/files/contact-form.env"
+        dest: "{{ contact_form_env_path }}"
+        owner: root
+        group: root
+        mode: "0600"
+
+    - name: Install contact form binary
+      copy:
+        src: "{{ playbook_dir }}/../contact-form/bin/contact-form"
+        dest: "{{ contact_form_binary_path }}"
+        owner: "{{ contact_form_user }}"
+        group: "{{ contact_form_group }}"
+        mode: "0755"
+
+    - name: Install contact form systemd service
+      template:
+        src: templates/contact-form.service.j2
+        dest: /etc/systemd/system/contact-form.service
+        mode: "0644"
+      notify: Reload systemd
+
+    - name: Update Nginx config for portfolio
+      template:
+        src: templates/nginx.conf.mrlouf.j2
+        dest: "{{ domain_nginx_config_path }}"
+        mode: "0644"
+      notify: Reload Nginx
+
+    - name: Ensure contact form service is running
+      systemd:
+        name: contact-form
+        state: started
+        enabled: yes
+        daemon_reload: true
+
+  handlers:
+    - name: Reload systemd
+      systemd:
+        daemon_reload: true
+
+    - name: Reload Nginx
+      service:
+        name: nginx
+        state: reloaded
