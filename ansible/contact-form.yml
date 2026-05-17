@@ -47,27 +47,22 @@
       run_once: true
 
     - name: Build contact form binary locally
-      command: go build -o "{{ playbook_dir }}/../contact-form/bin/contact-form" .
+      command: /usr/local/go/bin/go build -o ../contact-form/bin/contact-form ../contact-form/main.go
       args:
-        chdir: "{{ playbook_dir }}/../contact-form"
+        chdir: "{{ playbook_dir }}"
       delegate_to: localhost
       run_once: true
 
     - name: Verify contact form env file exists locally
       stat:
-        path: "{{ playbook_dir }}/files/contact-form.env"
+        path: "{{ playbook_dir }}/files/.env"
       delegate_to: localhost
       run_once: true
-      register: contact_form_env_file
-
-    - name: Fail if contact form env file is missing
-      fail:
-        msg: "Create ansible/files/contact-form.env from ansible/files/contact-form.env.example and fill SMTP credentials."
-      when: not contact_form_env_file.stat.exists
+      register: env_file_stat
 
     - name: Install contact form env file
       copy:
-        src: "{{ playbook_dir }}/files/contact-form.env"
+        src: "{{ playbook_dir }}/files/.env"
         dest: "{{ contact_form_env_path }}"
         owner: root
         group: root

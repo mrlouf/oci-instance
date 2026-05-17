@@ -21,3 +21,6 @@ contact_form_workdir: "/opt/contact-form"
 contact_form_binary_path: "/opt/contact-form/contact-form"
 contact_form_env_path: "/etc/contact-form.env"
 
+# ─── Go installation ─────────────────────────────────────────────────────────
+go_version: "1.26.3"
+go_download_url: "https://go.dev/dl/go{{ go_version }}.linux-amd64.tar.gz"
