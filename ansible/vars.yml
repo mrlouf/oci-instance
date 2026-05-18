@@ -7,8 +7,8 @@ local_site_path: "../../sites/portfolio"  # Chemin local vers les fichiers du po
 bingo_local_path: "../../sites/bingo"     # Chemin local vers les fichiers du bingo
 
 # ─── Chemins serveur ──────────────────────────────────────────────────────────
-remote_site_path: "/var/www/portfolio"
-remote_bingo_path: "/var/www/bingo"
+remote_site_path: "/var/www/"
+remote_bingo_path: "/var/www/"
 
 domain_nginx_config_path: "/etc/nginx/sites-available/portfolio"  # Chemin du fichier de config Nginx à créer
 bingo_nginx_config_path: "/etc/nginx/sites-available/bingo"  # Chemin du fichier de config Nginx à créer pour le site de bingo
