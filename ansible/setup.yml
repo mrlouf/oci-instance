@@ -30,7 +30,7 @@
 
     # ── Dossier du site ──────────────────────────────────────────────────────
 
-    - name: Création du dossier du site
+    - name: Création du dossier du portfolio
       file:
         path: "{{ remote_site_path }}"
         state: directory
@@ -38,19 +38,41 @@
         group: www-data
         mode: "0755"
 
+    - name: Création du dossier du bingo
+      file:
+        path: "{{ remote_bingo_path }}"
+        state: directory
+        owner: www-data
+        group: www-data
+        mode: "0755"
+
     # ── Config Nginx (HTTP d'abord, Certbot s'occupe du HTTPS) ───────────────
 
-    - name: Copie de la config Nginx
+    - name: Copie de la config Nginx pour le site portfolio
       template:
-        src: templates/nginx.conf.j2
-        dest: "{{ nginx_config_path }}"
+        src: templates/nginx.conf.mrlouf.j2
+        dest: "{{ domain_nginx_config_path }}"
         mode: "0644"
       notify: Reload Nginx
 
-    - name: Activation du site
+    - name: Copie de la config Nginx pour bingo.casa
+      template:
+        src: templates/nginx.conf.bingo.j2
+        dest: "{{ bingo_nginx_config_path }}"
+        mode: "0644"
+      notify: Reload Nginx
+
+    - name: Activation du site portfolio
       file:
-        src: "{{ nginx_config_path }}"
+        src: "{{ domain_nginx_config_path }}"
         dest: "/etc/nginx/sites-enabled/portfolio"
+        state: link
+      notify: Reload Nginx
+
+    - name: Activation du site bingo
+      file:
+        src: "{{ bingo_nginx_config_path }}"
+        dest: "/etc/nginx/sites-enabled/bingo"
         state: link
       notify: Reload Nginx
 
@@ -69,10 +91,13 @@
         name: nginx
         state: started
         enabled: yes
+    
+    - name: Appliquer immédiatement les changements Nginx avant Certbot
+      meta: flush_handlers
 
     # ── Certbot HTTPS ────────────────────────────────────────────────────────
 
-    - name: Obtention du certificat Let's Encrypt
+    - name: Obtention du certificat Let's Encrypt pour mrlouf.com
       command: >
         certbot --nginx
         -d {{ domain_name }}
@@ -83,6 +108,27 @@
         --redirect
       args:
         creates: /etc/letsencrypt/live/{{ domain_name }}/fullchain.pem
+
+    - name: Obtention du certificat pour bingos.casa
+      command: >
+        certbot --nginx
+        -d {{ bingo_domain }}
+        -d www.{{ bingo_domain }}
+        --non-interactive
+        --agree-tos
+        --email {{ certbot_email }}
+        --redirect
+      args:
+        creates: /etc/letsencrypt/live/{{ bingo_domain }}/fullchain.pem
+
+    - name: Vérification Nginx après modifications Certbot
+      command: nginx -t
+      changed_when: false
+
+    - name: Rechargement Nginx après Certbot
+      service:
+        name: nginx
+        state: reloaded
 
     # ── Renouvellement auto ──────────────────────────────────────────────────
 

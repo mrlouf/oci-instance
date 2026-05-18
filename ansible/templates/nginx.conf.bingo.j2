@@ -1,9 +1,22 @@
 server {
     listen 80;
     listen [::]:80;
-    server_name {{ domain_name }} www.{{ domain_name }};
+    server_name {{ bingo_domain }} www.{{ bingo_domain }};
 
-    root {{ remote_site_path }};
+    location /.well-known/acme-challenge/ {
+        root /var/www/certbot;
+    }
+
+    location / {
+        return 301 https://$host$request_uri;
+    }
+}
+
+server {
+    listen 443 ssl http2;
+    server_name {{ bingo_domain }} www.{{ bingo_domain }};
+
+    root {{ remote_bingo_path }};
     index index.html;
 
     # Compression gzip
@@ -26,6 +39,7 @@ server {
     add_header X-Frame-Options "SAMEORIGIN";
     add_header X-Content-Type-Options "nosniff";
     add_header Referrer-Policy "strict-origin-when-cross-origin";
-}
 
-# Certbot ajoutera automatiquement le bloc HTTPS (port 443) ici
+    ssl_certificate /etc/letsencrypt/live/{{ bingo_domain }}/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/{{ bingo_domain }}/privkey.pem;
+}

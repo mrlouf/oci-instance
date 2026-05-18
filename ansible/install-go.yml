@@ -1,0 +1,42 @@
+---
+# ─────────────────────────────────────────────────────────────────────────────
+# install-go.yml — Installation de Go
+# Usage : ansible-playbook -i inventory.ini install-go.yml
+# ─────────────────────────────────────────────────────────────────────────────
+
+- name: Deploy portfolio
+  hosts: portfolio
+  become: true
+  vars_files:
+    - vars.yml
+
+  tasks:
+
+    - name: Download Go archive
+      get_url:
+        url: "{{ go_download_url }}"
+        dest: "/tmp/go{{ go_version }}.linux-amd64.tar.gz"
+        mode: "0644"
+
+    - name: Remove any existing Go installation
+      file:
+        path: "/usr/local/go"
+        state: absent
+
+    - name: Extract Go archive
+      unarchive:
+        src: "/tmp/go{{ go_version }}.linux-amd64.tar.gz"
+        dest: "/usr/local/"
+        remote_src: yes
+
+    - name: Add Go to PATH
+      shell: |
+        echo "export PATH=\$PATH:/usr/local/go/bin" >> /etc/profile
+        source /etc/profile
+      args:
+        executable: /bin/bash
+
+    - name: Check Go installation
+      command: "/usr/local/go/bin/go version"
+      register: go_version_output
+      changed_when: false
