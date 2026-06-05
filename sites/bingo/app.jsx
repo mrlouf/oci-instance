@@ -50,7 +50,7 @@ const TechRecruitmentBingo = () => {
   ];
 
   const bonusSquares = [
-    'Rejection because "team priorities changed"',
+    '"We have decided to move forward with another candidate" (that applied months after the deadline out of nowhere and did not show up to the trial day)',
     'Job reposted after rejection',
     '"Want to apply? Fill out this 10-page form on a broken legacy PHP third-party platform"',
     'Interviewer didn\'t read your CV',
